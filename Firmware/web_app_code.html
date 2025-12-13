@@ -1,0 +1,300 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>CYBER DJ — Control Panel</title>
+<style>
+  /* cyberpunk vibes: neon, dark, glitchy */
+  :root{
+    --bg:#05020a;
+    --panel:#0f0b16;
+    --neon1:#ff2d95;
+    --neon2:#00e5ff;
+    --accent:#a6ff4d;
+    --muted:#9a8caa;
+    --glass: rgba(255,255,255,0.04);
+  }
+  body{background:linear-gradient(180deg,#03020a, #0b0a12 60%);color:#eee;font-family:Inter,system-ui,Segoe UI,Roboto,Arial;margin:0;display:flex;align-items:center;justify-content:center;height:100vh}
+  .card{width:920px;max-width:95%;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border-radius:20px;padding:24px;box-shadow: 0 10px 40px rgba(0,0,0,0.6);border:1px solid rgba(255,255,255,0.03);display:grid;grid-template-columns:1fr 360px;gap:18px}
+  .left{padding:12px}
+  h1{font-size:20px;margin:0 0 12px;color:var(--neon2);text-shadow:0 2px 12px rgba(0,229,255,0.06)}
+  .big-display{height:220px;background:linear-gradient(90deg, rgba(0,0,0,0.2), rgba(255,255,255,0.02));border-radius:12px;border:1px solid rgba(255,255,255,0.03);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px}
+  .big-display .title{font-weight:700;color:var(--neon1);letter-spacing:1px}
+  .meters{display:flex;gap:12px;width:100%;padding:14px}
+  .meter{flex:1;background:var(--glass);padding:10px;border-radius:10px;border:1px solid rgba(255,255,255,0.02)}
+  .meter .label{font-size:12px;color:var(--muted)}
+  .meter .value{font-size:20px;font-weight:700;color:var(--accent)}
+  .controls{display:flex;flex-direction:column;gap:12px;margin-top:12px}
+  .row{display:flex;gap:8px;align-items:center}
+  .slider{flex:1}
+  input[type=range]{-webkit-appearance:none;width:100%}
+  input[type=range]::-webkit-slider-runnable-track{height:8px;border-radius:99px;background:linear-gradient(90deg,var(--neon1),var(--neon2))}
+  input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;background:#fff;border-radius:50%;height:18px;width:18px;margin-top:-5px;box-shadow:0 6px 18px rgba(0,0,0,0.5)}
+  .right{padding:12px;background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.01));border-radius:12px;border:1px solid rgba(255,255,255,0.02)}
+  .connect-btn{display:inline-block;padding:10px 14px;border-radius:10px;background:linear-gradient(90deg,var(--neon1),var(--neon2));color:#05020a;font-weight:800;border:none;cursor:pointer}
+  .small-btn{padding:8px 10px;border-radius:8px;background:#111;border:1px solid rgba(255,255,255,0.03);color:var(--muted);cursor:pointer}
+  .effects{display:flex;gap:8px;flex-wrap:wrap}
+  footer{font-size:12px;color:var(--muted);margin-top:12px}
+  .status{font-weight:700;color:var(--neon2);}
+  .top-row{display:flex;justify-content:space-between;align-items:center;gap:12px}
+</style>
+</head>
+<body>
+  <div class="card">
+    <div class="left">
+      <div class="top-row">
+        <h1>CYBER DJ — LIGHTS</h1>
+        <div>
+          <button id="connect" class="connect-btn">CONNECT</button>
+          <span id="deviceName" style="margin-left:12px;color:var(--muted)"></span>
+        </div>
+      </div>
+
+      <div class="big-display" id="display">
+        <div class="title">NEON PANEL</div>
+        <div class="meters" style="width:100%">
+          <div class="meter">
+            <div class="label">Channel A (big)</div>
+            <div class="value" id="valA">0</div>
+          </div>
+          <div class="meter">
+            <div class="label">Channel B (small)</div>
+            <div class="value" id="valB">0</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="controls">
+        <div class="row">
+          <div style="width:90px">Channel A</div>
+          <input id="sliderA" class="slider" type="range" min="0" max="255" value="0">
+          <button id="maxA" class="small-btn">MAX</button>
+        </div>
+        <div class="row">
+          <div style="width:90px">Channel B</div>
+          <input id="sliderB" class="slider" type="range" min="0" max="255" value="0">
+          <button id="maxB" class="small-btn">MAX</button>
+        </div>
+
+        <div style="display:flex;gap:8px;align-items:center">
+          <div style="width:90px">Effects</div>
+          <div class="effects">
+            <button class="small-btn ef" data-mode="0">Static</button>
+            <button class="small-btn ef" data-mode="1">Breathe</button>
+            <button class="small-btn ef" data-mode="2">Crossfade</button>
+            <button class="small-btn ef" data-mode="3">Strobe</button>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div>Status: <span id="status" class="status">disconnected</span></div>
+        <div style="margin-top:6px">Tip: Use Chrome on Android or Desktop. Click CONNECT, pick device named <b>CYBER_DJ</b>.</div>
+      </footer>
+    </div>
+
+    <div class="right">
+      <h3 style="margin-top:6px;color:var(--neon1)">Visualizer</h3>
+      <div id="vizContainer"
+     style="height:220px;background:#07050b;border-radius:10px;margin-top:8px;position:relative;overflow:hidden;">
+  <canvas id="visualizer" width="400" height="220"
+          style="position:absolute;top:0;left:0;width:100%;height:100%;">
+  </canvas>
+
+  <button id="startAudio"
+          style="position:absolute;bottom:10px;right:10px;padding:6px 10px;border-radius:6px;
+          background:linear-gradient(90deg,var(--neon1),var(--neon2));color:#000;font-weight:700;border:none;cursor:pointer;">
+    🎧 Start Visualizer
+  </button>
+</div>
+
+
+      <h4 style="margin-top:14px;color:var(--neon2)">Quick Presets</h4>
+      <div style="display:flex;gap:8px;margin-top:8px">
+        <button id="p1" class="small-btn">Rave</button>
+        <button id="p2" class="small-btn">Chill</button>
+        <button id="p3" class="small-btn">Strobe</button>
+      </div>
+
+      <h4 style="margin-top:14px;color:var(--neon1)">Advanced</h4>
+      <div style="display:flex;flex-direction:column;gap:8px;margin-top:8px">
+        <button id="rawZero" class="small-btn">Zero A+B</button>
+        <button id="disconnect" class="small-btn">Disconnect</button>
+      </div>
+    </div>
+  </div>
+
+<script>
+const SERVICE_UUID = '6e400001-b5a3-f393-e0a9-e50e24dcca9e';
+const CHAR_A = '6e400002-b5a3-f393-e0a9-e50e24dcca9e';
+const CHAR_B = '6e400003-b5a3-f393-e0a9-e50e24dcca9e';
+const CHAR_EFFECT = '6e400004-b5a3-f393-e0a9-e50e24dcca9e';
+
+let device = null;
+let server = null;
+let svc = null;
+let charA = null;
+let charB = null;
+let charE = null;
+
+const connectBtn = document.getElementById('connect');
+const deviceName = document.getElementById('deviceName');
+const status = document.getElementById('status');
+const valA = document.getElementById('valA');
+const valB = document.getElementById('valB');
+const sliderA = document.getElementById('sliderA');
+const sliderB = document.getElementById('sliderB');
+
+async function connect() {
+  try {
+    status.textContent = 'scanning...';
+    device = await navigator.bluetooth.requestDevice({
+      filters: [{ name: 'CYBER_DJ' }],
+      optionalServices: [SERVICE_UUID]
+    });
+    deviceName.textContent = device.name || 'unknown';
+    status.textContent = 'connecting...';
+
+    server = await device.gatt.connect();
+    svc = await server.getPrimaryService(SERVICE_UUID);
+
+    charA = await svc.getCharacteristic(CHAR_A);
+    charB = await svc.getCharacteristic(CHAR_B);
+    charE = await svc.getCharacteristic(CHAR_EFFECT);
+
+    status.textContent = 'connected';
+    console.log('connected to', device.name);
+  } catch (err) {
+    console.error(err);
+    status.textContent = 'error';
+  }
+}
+
+async function writeChar(chr, value) {
+  if(!chr) { console.warn('char not ready'); return; }
+  try {
+    let arr = new Uint8Array([value & 0xFF]);
+    await chr.writeValue(arr);
+  } catch (e) {
+    console.error('write failed', e);
+    status.textContent = 'write error';
+  }
+}
+
+// UI events
+connectBtn.addEventListener('click', connect);
+
+sliderA.addEventListener('input', () => {
+  const v = parseInt(sliderA.value);
+  valA.textContent = v;
+  writeChar(charA, v);
+});
+sliderB.addEventListener('input', () => {
+  const v = parseInt(sliderB.value);
+  valB.textContent = v;
+  writeChar(charB, v);
+});
+
+document.querySelectorAll('.ef').forEach(b=>{
+  b.addEventListener('click', ()=>{
+    const m = parseInt(b.dataset.mode);
+    writeChar(charE, m);
+    status.textContent = 'effect ' + m;
+  });
+});
+
+document.getElementById('maxA').addEventListener('click', ()=>{
+  sliderA.value = 255; sliderA.dispatchEvent(new Event('input'));
+});
+document.getElementById('maxB').addEventListener('click', ()=>{
+  sliderB.value = 255; sliderB.dispatchEvent(new Event('input'));
+});
+
+document.getElementById('p1').addEventListener('click', ()=>{
+  // rave: alternating fast strobe
+  writeChar(charE, 3);
+  setTimeout(()=>{ writeChar(charE, 0); writeChar(charA, 255); writeChar(charB, 0); }, 2000);
+});
+document.getElementById('p2').addEventListener('click', ()=>{
+  writeChar(charE, 1); // breathe
+});
+document.getElementById('p3').addEventListener('click', ()=>{
+  writeChar(charE, 3); // strobe
+});
+
+document.getElementById('rawZero').addEventListener('click', ()=>{
+  writeChar(charE, 0);
+  writeChar(charA, 0); sliderA.value = 0; valA.textContent = 0;
+  writeChar(charB, 0); sliderB.value = 0; valB.textContent = 0;
+});
+
+document.getElementById('disconnect').addEventListener('click', async ()=>{
+  if(device && device.gatt.connected) {
+    device.gatt.disconnect();
+    status.textContent = 'disconnected';
+    deviceName.textContent = '';
+  }
+});
+
+// friendly fallback for page load
+if(!navigator.bluetooth) {
+  status.textContent = 'Web Bluetooth not supported in this browser';
+ 
+}
+ // ---------- MUSIC VISUALIZER (CYBERPUNK BARS) ----------------
+const canvas = document.getElementById('visualizer');
+const ctx = canvas.getContext('2d');
+const startBtn = document.getElementById('startAudio');
+
+let audioCtx;
+let analyser;
+let dataArray;
+
+startBtn.addEventListener('click', async () => {
+  startBtn.style.display = 'none'; // hide button once running
+
+  // create Web Audio context
+  audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+  analyser = audioCtx.createAnalyser();
+  analyser.fftSize = 256;
+
+  const mic = await navigator.mediaDevices.getUserMedia({ audio: true });
+  const source = audioCtx.createMediaStreamSource(mic);
+  source.connect(analyser);
+
+  const bufferLength = analyser.frequencyBinCount;
+  dataArray = new Uint8Array(bufferLength);
+
+  drawBars();
+});
+
+function drawBars() {
+  requestAnimationFrame(drawBars);
+
+  analyser.getByteFrequencyData(dataArray);
+
+  const width = canvas.width;
+  const height = canvas.height;
+
+  ctx.clearRect(0, 0, width, height);
+
+  const barCount = 50; // number of bars
+  const barWidth = width / barCount;
+
+  for (let i = 0; i < barCount; i++) {
+    const raw = dataArray[i] || 0;
+    const barHeight = (raw / 255) * height;
+
+    // neon gradient
+    const grad = ctx.createLinearGradient(0, height, 0, height - barHeight);
+    grad.addColorStop(0, "#ff2d95");
+    grad.addColorStop(1, "#00e5ff");
+
+    ctx.fillStyle = grad;
+    ctx.fillRect(i * barWidth, height - barHeight, barWidth - 2, barHeight);
+  }
+}
+</script>
+</body>
+</html>
