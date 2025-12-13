@@ -1,4 +1,5 @@
-the case may look inconplet becous it is i plan on making the smaller holes and little tweks when i actually print it out the case untile now has a hole and a lid to put the pcb a hole for the knobe to change the sound on one side and the other will have the microphone for the music off course i may make it bigger or smaller but the shape is the smae off course i need to prototype many encluser to arrive to the perfect size and shape .
+This case is still a work in progress. Right now, the basic shape is done: the main body, the lid where the PCB will sit, a hole for the knob, and another opening on the other side where the microphone will go.
+I haven't printed it yet, so the details might change. Once I start doing test prints, I’ll fix the small holes, adjust the size, and tweak anything that doesn’t fit well. The overall design will stay the same, but the measurements will probably shift a bit as I try it out.
 
 <img width="718" height="386" alt="Screenshot 2025-12-13 115145" src="https://github.com/user-attachments/assets/db7f4ac8-83a1-4b5d-a291-de43463ab582" />
 
