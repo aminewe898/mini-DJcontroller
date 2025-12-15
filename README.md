@@ -16,7 +16,7 @@ This is a long-term project that will evolve over time, but this prototype is th
 ## What’s Inside
 
 **CAD/** — Early 3D printed case design (still work in progress).
-**PCB/** — First KiCad schematic + board layout draft.
+**PCB/** — First KiCad schematic + board layout draft+wiring_schematic.png.
 **Docs/** — BOM.csv + build log (book.csv).
 **Images/** — Screenshots and photos of the prototype.
 
