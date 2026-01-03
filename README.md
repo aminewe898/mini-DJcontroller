@@ -5,7 +5,8 @@ Right now, it uses a hand-soldered protoboard and a basic buttons controlled int
 The Raspberry Pi Pico acts as the main controller.
 This is what the final project will look like if everything went perfectly:
 
-<img width="1082" height="673" alt="image" src="https://github.com/user-attachments/assets/caa120e1-6243-4364-8663-75e10e1b152e" />
+<img width="1106" height="682" alt="super pic" src="https://github.com/user-attachments/assets/2fb5777f-f600-435c-88fc-a070bbe2dd6f" />
+
 
 
 The main goal of this version is to add a **microphone**, **speaker**, and **physical controls** such as knobs and buttons, and even a **screen** in the future. I also plan to include an SD card reader so the device can record sound, store data, and experiment with remixing audio.
