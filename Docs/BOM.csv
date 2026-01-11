@@ -1,12 +1,14 @@
 Item,Description,Quantity,Unit Price (EUR),Total Price (EUR),Link
-Raspberry Pi Pico,Raspberry Pi Pico usb type c ,1,5.00,5.00,https://es.aliexpress.com/item/1005004829452076.html?spm=a2g0o.productlist.main.14.241012d07ZbE4T&algo_pvid=743a9acc-d8e6-4d20-adbd-b2ef4e753505&pdp_ext_f=%7B%22order%22%3A%222%22%2C%22eval%22%3A%221%22%2C%22fromPage%22%3A%22search%22%7D&utparam-url=scene%3Asearch%7Cquery_from%3A%7Cx_object_id%3A1005004829452076%7C_p_origin_prod%3A
-LED Strip / LED Modules,Red/Blue LEDs used in panel,1,7.50,7.50,https://es.aliexpress.com/item/1005010406257941.html
-Resistor Kit,Assorted resistors for LED current limiting,1,2.10,2.10,https://www.aliexpress.com/item/32849671286.html
-3D Printed Case,Printed enclosure from Tinkercad (not printed yet),1,0.00,0.00,https://www.tinkercad.com/
-Pin Headers & Jumper Wires,Headers + wire kit,1,4.00,4.00,https://es.aliexpress.com/item/1005009794836849.html
-Power via USB,Standard USB cable for ESP32,1,0.50,0.50,https://www.aliexpress.com/item/1005002005639317.html
-Soldering Consumables,Solder wire + flux (small quantities),1,4.10,4.10,https://es.aliexpress.com/item/1005008585413460.html
-Microphone Module,Electret mic module for basic sound input,1,1.03,1.03,https://es.aliexpress.com/item/1005009182912928.html
+Raspberry Pi Pico,Raspberry Pi Pico USB Type-C,1,5.00,5.00,https://es.aliexpress.com/item/1005004829452076.html
+LED Strip (WS2812B),Addressable RGB LED strip 5V 5m 30LED/m,1,6.99,6.99,https://es.aliexpress.com/item/1005010406257941.html
+Resistor Kit,600pcs assorted resistors for LED current limiting,1,2.37,2.37,https://www.aliexpress.com/item/32849671286.html
+Micro SD Module,Micro SD card SPI reader module 3.3V,1,1.48,1.48,https://es.aliexpress.com/item/1005004829452076.html
+Pin Headers,Gold plated pin headers set,1,3.29,3.29,https://es.aliexpress.com/item/1005009794386849.html
+Red/Black Wire,2-pin tinned copper wire 26AWG 5m,1,2.45,2.45,https://www.aliexpress.com/item/100500XXXXXXX.html
+USB Cable,USB-A to USB-C cable 0.5m,1,1.06,1.06,https://www.aliexpress.com/item/100500200539317.html
+Solder Wire,Lead-free solder wire 20g,1,3.89,3.89,https://www.aliexpress.com/item/1005008585413460.html
+Microphone Module,Electret microphone module for sound input,1,1.03,1.03,https://es.aliexpress.com/item/1005009182912928.html
 Speaker,Reused from old electronics,1,0.00,0.00,N/A
-Micro SD Card (optional),For storing future audio-reactive data,1,0.70,0.70,https://es.aliexpress.com/item/1005006997146471.html?spm=a2g0o.productlist.main.1.1922795cfwiJxj&algo_pvid=dfd1a676-bf8d-47a8-9c7c-a9908b999e36&pdp_ext_f=%7B%22order%22%3A%222849%22%2C%22eval%22%3A%221%22%2C%22orig_sl_item_id%22%3A%221005006997146471%22%2C%22orig_item_id%22%3A%221005009254250259%22%2C%22fromPage%22%3A%22search%22%7D&utparam-url=scene%3Asearch%7Cquery_from%3A%7Cx_object_id%3A1005006997146471%7C_p_origin_prod%3A1005009254250259
-Total,, , ,24.23,
+Micro SD Card (optional),Micro SD card for data storage,1,0.70,0.70,https://es.aliexpress.com/item/1005006997146471.html
+3D Printed Case,Printed enclosure (not printed yet),1,0.00,0.00,N/A
+TOTAL,,,,28.26 + shipping (4,71€) =31,54€ ,
