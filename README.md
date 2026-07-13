@@ -1,4 +1,4 @@
-# CYBER DJ Controller
+# mini DJ Controller
 
 This project is just a small prototype for a bigger DJ controller idea.
 Right now, it uses a hand-soldered protoboard and a basic buttons controlled interface.
