@@ -40,8 +40,9 @@ Firmware compilation and physical output behavior have not been re-tested during
 
 ## Engineering focus
 
-The project records the transition from browser/BLE-controlled ESP32 firmware to a serial-controlled Pico design, with separate electrical, mechanical, and software artifacts. See [consolidation provenance](docs/PROVENANCE.md) for preserved source repositories and history.
+The project records the transition from browser/BLE-controlled ESP32 firmware to a serial-controlled Pico design, with separate electrical, mechanical, and software artifacts. See [consolidation provenance](Docs/PROVENANCE.md) for preserved source repositories and history.
 
 ## Licensing
 
 Existing license files remain in their original imported directories. In particular, `legacy/cyber-dj/LICENSE` applies to that imported material. No new blanket license is asserted for the complete hardware collection.
+
