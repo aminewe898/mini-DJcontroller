@@ -1,28 +1,47 @@
-# mini DJ Controller
+# Mini DJ Controller — embedded lighting prototype
 
-This project is just a small prototype for a bigger DJ controller idea.
-Right now, it uses a hand-soldered protoboard and a basic buttons controlled interface.
-The Raspberry Pi Pico acts as the main controller.
-This is what the final project will look like if everything went perfectly:
+A hands-on microcontroller project exploring two-channel PWM lighting, serial controls, enclosure design, and prototype electronics. The current firmware targets the **Raspberry Pi Pico (RP2040)**; earlier ESP32 BLE iterations are preserved under `legacy/`.
 
-<img width="1106" height="682" alt="super pic" src="https://github.com/user-attachments/assets/2fb5777f-f600-435c-88fc-a070bbe2dd6f" />
+## Implemented scope
 
+- Two PWM output channels on GPIO 5 and 18.
+- Manual brightness, breathing, crossfade, and strobe modes.
+- Serial commands for channel values and effect selection; the V2 sketch adds an effect-speed command.
+- STEP/STL enclosure designs, schematic/PCB images, a component BOM, photographs, and a build log.
 
+This is a **hardware prototype**, not a finished audio DJ mixer. Microphone input, audio recording/remixing, AI visuals, display integration, and final PCB/assembly validation remain future work. Images describing a final concept are design intentions, not proof of a manufactured product.
 
-The main goal of this version is to add a **microphone**, **speaker**, and **physical controls** such as knobs and buttons, and even a **screen** in the future. I also plan to include an SD card reader so the device can record sound, store data, and experiment with remixing audio.
+## Repository structure
 
-For a later version, I want to add a camera and experiment with **visual AI**, using tools like **Teachable Machine** to create interactive and **audio-reactive visuals** on an **OLED*. Another important goal is to make the **device smaller**, **cheaper to replicate**, and more portable than traditional DJ controller units, so beginners can easily use it and carry it anywhere.
+| Directory | Purpose |
+| --- | --- |
+| `Firmware/` | Current Pico sketches |
+| `CAD/` | Enclosure STEP/STL files and design images |
+| `PCB/` | Early schematics and board-layout images |
+| `Docs/` | Bill of materials and build log |
+| `Images/` | Prototype photos and development screenshots |
+| `legacy/esp32-ble-prototype/` | Earlier BLE firmware/browser controller, case ZIP, and records |
+| `legacy/cyber-dj/` | Original BLE controller and original demonstration media |
 
-This is a long-term project that will evolve over time, but this prototype is the starting point. I’m motivated, learning a lot through each iteration, and excited to continue improving it step by step.
+## Firmware usage
 
-## What’s Inside
+Open one sketch from `Firmware/` in an Arduino-compatible RP2040 toolchain and select the matching Pico board. Inspect the pin assignments and schematic before connecting a load; do not assume a GPIO can drive a lamp directly.
 
-**CAD/** — Early 3D printed case design (still work in progress).
-**PCB/** — First KiCad schematic + board layout draft+wiring_schematic.png.
-**Docs/** — BOM.csv + build log (book.csv).
-**Images/** — Screenshots and photos of the prototype.
+The serial interface runs at 115200 baud:
 
-### Status
+```text
+A 128    # channel A brightness, 0–255
+B 64     # channel B brightness, 0–255
+E 1      # effect: 0 manual, 1 breathe, 2 crossfade, 3 strobe
+S 30     # V2 only: effect speed, 1–100
+```
 
-This version is still early.
-PCB routing, 3D case, microphone module, and final assembly will be improved once the prototype is manufactured and tested.
+Firmware compilation and physical output behavior have not been re-tested during portfolio curation. Hardware reproducibility and assembly testing are still needed.
+
+## Engineering focus
+
+The project records the transition from browser/BLE-controlled ESP32 firmware to a serial-controlled Pico design, with separate electrical, mechanical, and software artifacts. See [consolidation provenance](docs/PROVENANCE.md) for preserved source repositories and history.
+
+## Licensing
+
+Existing license files remain in their original imported directories. In particular, `legacy/cyber-dj/LICENSE` applies to that imported material. No new blanket license is asserted for the complete hardware collection.
