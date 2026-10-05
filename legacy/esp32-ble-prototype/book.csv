@@ -1,0 +1,8 @@
+day,entry
+1,"Got the idea and did some sketching in my notebook."
+2,"Prepared the components I needed and scavenged missing parts from an  old grandma's radio."
+2.5,"Started soldering components but failed because I connected two pols of LEDs and didn’t know how to desolder them."
+3,"Started again with a new board. Soldered the red LEDs with their transistor, then the blue ones. Still didn’t work because I wired the reds in series (8 of them ). Back to the drawing board."
+4,"Fixed the wiring properly. Everything checked out. Started coding after 5 hours of YouTube tutorials."
+5,"Finally got it working ---->>>>>>lets gooooooooooooooooooooooooooooooooooooooooooooooooo (Update: the board started smoking 💀)"
+6,"Fixed the issue  , transistor was too weak and voltage was off. Replaced with a bigger one (an s8050) snd everything works. Only the web interface left, which I built with AI because I don’t know HTML.(i did try to leanr it but my level is just toooo low for this project )"

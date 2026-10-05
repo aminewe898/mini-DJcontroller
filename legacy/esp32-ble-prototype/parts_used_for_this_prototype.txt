@@ -1,0 +1,8 @@
+1 esp32 dev board 
+8 red leds 
+2 blue leds
+1 pn2222 transistor 
+1 s8050 transistor 
+1 protoboard 
+10 220 ohm resistor 
+1 47 5v capacitor 
